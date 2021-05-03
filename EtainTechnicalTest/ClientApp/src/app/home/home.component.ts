@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherDto } from '../models/weather.dto';
 import { AuthorizeService } from '../../api-authorization/authorize.service';
 import { ForecastService } from '../../services/forecast.services'
-import { PullToRefresh } from 'pulltorefreshjs'
+import * as PullToRefresh from 'pulltorefreshjs';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +12,7 @@ import { PullToRefresh } from 'pulltorefreshjs'
 export class HomeComponent implements OnInit {
   isAuthenticated: Observable<boolean>;
   weather: WeatherDto;
+  ptrInit:any;
 
   constructor(
     private authorizeService: AuthorizeService,
@@ -21,7 +22,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isAuthenticated = this.authorizeService.isAuthenticated();
+    this.updateForecast();
 
+    this.ptrInit = PullToRefresh.init({
+      mainElement: 'body',
+      onRefresh: () => this.updateForecast()
+    });
+  }
+
+  getLastUpdated() {
+    let time = new Date(this.weather.time);
+    return `${ time.getHours() }:${ time.getMinutes() }:${ time.getSeconds() }`;
+  }
+
+  updateForecast() {
     this.isAuthenticated.subscribe(result => {
       if (result) { 
         this.forecastService.getFiveDayForecast().subscribe((data: WeatherDto) => {
@@ -31,8 +45,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getLastUpdated() {
-    let time = new Date(this.weather.time);
-    return `${ time.getHours() }:${ time.getMinutes() }:${ time.getSeconds() }`;
+  componentWillUnmount()
+  {
+      PullToRefresh.destroyAll();
   }
 }

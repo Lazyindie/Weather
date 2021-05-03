@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as PullToRefresh from 'pulltorefreshjs';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,4 @@ import * as PullToRefresh from 'pulltorefreshjs';
 })
 export class AppComponent {
   title = 'app';
-  ptrinit:any = PullToRefresh.init();
 }
