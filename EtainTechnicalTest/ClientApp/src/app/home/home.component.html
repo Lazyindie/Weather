@@ -3,7 +3,7 @@
 <div *ngIf="(isAuthenticated | async); else notLoggedIn">
   <div class="flex-forecast" *ngIf="weather" >
     <div *ngFor="let forecast of weather.consolidatedWeather">
-      <weather-tile [forecast]="forecast"></weather-tile>
+      <weather-tile ngFor="let forecast of weather.consolidatedWeather" [forecast]="forecast"></weather-tile>
     </div>
   </div>
 </div>

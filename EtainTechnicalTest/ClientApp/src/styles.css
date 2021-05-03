@@ -17,8 +17,9 @@ code {
 
 .flex-forecast {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   border: black solid 2px;
   border-radius: 10px;
 }
@@ -27,8 +28,6 @@ code {
   position: relative;
   width: 150px;
   height: 250px;
-  margin: 2px;
-  padding: 5px;
   text-align: center;
 }
 
@@ -44,3 +43,8 @@ code {
   left: 0;
 }
 
+.today {
+  background-color: rgba(41,120,181,0.2);
+  margin: -2px;
+  border-radius: 10px;
+}

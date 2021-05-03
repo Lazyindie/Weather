@@ -16,6 +16,10 @@ export class WeatherTileComponent {
 
   }
 
+  isToday() {
+    return new Date(this.forecast.applicableDate).getDay() === new Date().getDay();
+  }
+
   getDate() {
     var date = new Date(this.forecast.applicableDate);
     return date.toLocaleString().split(',')[0];
