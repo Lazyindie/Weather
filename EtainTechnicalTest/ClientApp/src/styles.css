@@ -9,6 +9,16 @@ code {
   color: #e01a76;
 }
 
+i {
+  font-size: small;
+  margin: 0px;
+}
+
+p {
+  margin: 0px;
+  margin-top: -5px;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;

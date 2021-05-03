@@ -1,5 +1,6 @@
 <h1>Belfast</h1>
 <p>5 day weather forecast</p>
+<i *ngIf="weather">Last updated: {{ getLastUpdated() }}</i>
 <div *ngIf="(isAuthenticated | async); else notLoggedIn">
   <div class="flex-forecast" *ngIf="weather" >
     <div *ngFor="let forecast of weather.consolidatedWeather">

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherDto } from '../models/weather.dto';
 import { AuthorizeService } from '../../api-authorization/authorize.service';
 import { ForecastService } from '../../services/forecast.services'
+import { PullToRefresh } from 'pulltorefreshjs'
 
 @Component({
   selector: 'app-home',
@@ -28,5 +29,10 @@ export class HomeComponent implements OnInit {
         });
       }
     });
+  }
+
+  getLastUpdated() {
+    let time = new Date(this.weather.time);
+    return `${ time.getHours() }:${ time.getMinutes() }:${ time.getSeconds() }`;
   }
 }
