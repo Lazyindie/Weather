@@ -1,0 +1,8 @@
+<div class="weather-tile">
+    <h4>{{ getDay() }}</h4>
+    <p>{{ getDate() }}</p>
+    <img [src]="getIcon()"/>
+    <div class="weather-state-container">
+        <p class="weather-state-text">{{ forecast.weatherStateName }}</p>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<h1>Belfast</h1>
+<p>5 day weather forecast</p>
+<div *ngIf="(isAuthenticated | async); else notLoggedIn">
+  <div class="flex-forecast" *ngIf="weather" >
+    <div *ngFor="let forecast of weather.consolidatedWeather">
+      <weather-tile [forecast]="forecast"></weather-tile>
+    </div>
+  </div>
+</div>
+<ng-template #notLoggedIn>
+  Please log in to view weather forecast
+</ng-template>
